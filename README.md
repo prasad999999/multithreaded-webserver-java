@@ -1,32 +1,74 @@
 
 ---
 
-# 🖧 Java Client-Server Communication
+# 🖧 Java Multithreaded Client-Server System
 
-A simple **multi-threaded socket communication** project in Java.
+This project demonstrates a **Java-based multithreaded client-server communication system** implemented using sockets and thread pools.
 
-## 📂 Files
+---
 
-* `Server.java` – Listens on port **8010**, accepts client connections, and sends `"Hello from the server"`.
-* `Client.java` – Creates **100 threads**, connects to the server, sends a message, and prints the response.
+## 📂 Project Structure
 
-## ⚙️ How to Run
+```
+📦 WebServer
+ ┣ 📂 MultiThreaded WebServer
+ ┃ ┣ 📜 Server.java
+ ┃ ┗ 📜 Client.java
+ ┣ 📂 ThreadPool
+ ┃ ┗ 📜 Server.java
+ ┗ 📜 README.md
+```
+
+---
+
+## ⚙️ Overview
+
+### **MultithreadedWebServer**
+
+* The **Server** accepts multiple client connections and spawns a new thread for each.
+* The **Client** creates 100 concurrent connections to the server and exchanges simple messages.
+
+### **ThreadPool**
+
+* The **Server** uses a **fixed thread pool (ExecutorService)** for efficient resource management.
+* Handles multiple clients concurrently without spawning unlimited threads.
+
+---
+
+## 🏃 How to Run
 
 1. **Compile:**
 
    ```bash
-   javac Server.java Client.java
+   javac MultithreadedWebServer/*.java ThreadPool/*.java
    ```
-2. **Run Server:**
+2. **Run a Server (choose one):**
 
    ```bash
-   java Server
+   java MultithreadedWebServer.Server
    ```
-3. **Run Client (in another terminal):**
+
+   or
 
    ```bash
-   java Client
+   java ThreadPool.Server
    ```
+3. **Run the Client (in another terminal):**
+
+   ```bash
+   java MultithreadedWebServer.Client
+   ```
+
+---
+
+## 🧠 Highlights
+
+* Uses **TCP Sockets** for communication
+* Demonstrates **multi-threading** and **thread pooling**
+* Supports **concurrent client connections**
+* Simple and scalable server design
+
+---
 
 ## 🧩 Example Output
 
@@ -34,7 +76,7 @@ A simple **multi-threaded socket communication** project in Java.
 
 ```
 Server is listening on port 8010
-Connection accepted from client /127.0.0.1:51234
+Connection accepted from client /127.0.0.1:50512
 ```
 
 **Client:**
@@ -43,11 +85,4 @@ Connection accepted from client /127.0.0.1:51234
 Response from socket is Hello from the server
 ```
 
-## 🧠 Highlights
-
-* Uses **Socket** and **ServerSocket**
-* Supports **multi-threading** on both client and server sides
-* Demonstrates **basic TCP communication**
-
 ---
-
